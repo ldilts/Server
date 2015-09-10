@@ -118,6 +118,18 @@ public class Server extends javax.swing.JFrame {
 
                 serverTextField.setText("");
             }  
+            
+            byte[] test = hexStringToByteArray("7805f104");
+//            byte[] test = new byte[]{
+//                (byte)0x23, (byte)0x23, (byte)0x23
+//            };
+            try {
+//                dataOutput.writeInt(test.length); // write length of the message
+                dataOutput.write(test);           // write the message
+            } catch (IOException ex) {
+                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_serverButtonActionPerformed
 
@@ -169,7 +181,7 @@ public class Server extends javax.swing.JFrame {
             input = new BufferedReader(new InputStreamReader(acceptSocket.getInputStream()));
             dataInput = new DataInputStream(acceptSocket.getInputStream());
             
-            byte[] test = hexStringToByteArray("010109014c75636173");
+            byte[] test = hexStringToByteArray("7805f104");
             dataOutput.writeInt(test.length); // write length of the message
             dataOutput.write(test);           // write the message
             
